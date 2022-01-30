@@ -1,1 +1,2 @@
-
+INSERT INTO "cooling" (coolingtype, hasrgb, size, fanconnectortype, brandname, price, color, numfans)
+VALUES ('Fan', '0', 12, 'threePin', 'Fun', 1000000.00, 'All of them', 1);
