@@ -81,7 +81,7 @@ CREATE TABLE MOTHERBOARD
   hasRGB INT,
   numVideoPorts INT NOT NULL,
   numSataPorts INT NOT NULL,
-  numM.2Ports INT,
+  numM2Ports INT,
   PRIMARY KEY (motherboardID)
 );
 
@@ -230,3 +230,4 @@ CREATE TABLE hasGPU
   PRIMARY KEY (gpuID, buildID),
   FOREIGN KEY (gpuID) REFERENCES GPU(gpuID),
   FOREIGN KEY (buildID) REFERENCES SAVED_PC_BUILDS(buildID)
+);
