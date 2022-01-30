@@ -1,53 +1,54 @@
+Generate SQL
 CREATE TABLE PSU
 (
-  psuID SERIAL NOT NULL,
-  color INT NOT NULL,
-  efficiencyRating INT NOT NULL,
+  psuID INT NOT NULL,
+  color VARCHAR NOT NULL,
+  efficiencyRating VARCHAR NOT NULL,
   isModular INT NOT NULL,
   watts INT NOT NULL,
-  bradnName INT NOT NULL,
-  price INT NOT NULL,
+  brandName VARCHAR NOT NULL,
+  price NUMERIC NOT NULL,
   PRIMARY KEY (psuID)
 );
 
 CREATE TABLE USERS
 (
-  userID SERIAL NOT NULL,
+  userID INT NOT NULL,
   isAdmin INT NOT NULL,
   phoneNumber INT NOT NULL,
   email VARCHAR NOT NULL,
   password VARCHAR NOT NULL,
   userName VARCHAR NOT NULL,
-  lastName INT NOT NULL,
-  firstName INT NOT NULL,
+  lastName VARCHAR NOT NULL,
+  firstName VARCHAR NOT NULL,
   PRIMARY KEY (userID),
   UNIQUE (userName)
 );
 
 CREATE TABLE COOLING
 (
-  coolingID SERIAL NOT NULL,
-  coolingType INT NOT NULL,
+  coolingID INT NOT NULL,
+  coolingType VARCHAR NOT NULL,
   hasRGB INT,
-  size INT NOT NULL,
-  fanConnectorType INT,
-  brandName INT NOT NULL,
-  price INT NOT NULL,
-  color INT NOT NULL,
+  size VARCHAR NOT NULL,
+  fanConnectorType VARCHAR,
+  brandName VARCHAR NOT NULL,
+  price NUMERIC NOT NULL,
+  color VARCHAR NOT NULL,
   numFans INT,
   PRIMARY KEY (coolingID)
 );
 
 CREATE TABLE STORAGE
 (
-  storageID SERIAL NOT NULL,
-  price INT NOT NULL,
-  storageType INT NOT NULL,
-  formFactor INT NOT NULL,
-  connectorType INT NOT NULL,
+  storageID INT NOT NULL,
+  price NUMERIC NOT NULL,
+  storageType VARCHAR NOT NULL,
+  formFactor VARCHAR NOT NULL,
+  connectorType VARCHAR NOT NULL,
   storageAmount INT NOT NULL,
-  theoreticalSpeed INT NOT NULL,
-  brandName INT NOT NULL,
+  theoreticalSpeed VARCHAR NOT NULL,
+  brandName VARCHAR NOT NULL,
   PRIMARY KEY (storageID)
 );
 
@@ -55,29 +56,29 @@ CREATE TABLE PROCESSOR
 (
   numCores INT NOT NULL,
   isMultiThreaded INT NOT NULL,
-  clockSpeed INT NOT NULL,
-  socketType INT NOT NULL,
-  price INT NOT NULL,
-  modelName INT NOT NULL,
-  brandName INT NOT NULL,
-  cpuID SERIAL NOT NULL,
+  clockSpeed NUMERIC NOT NULL,
+  socketType VARCHAR NOT NULL,
+  price NUMERIC NOT NULL,
+  modelName VARCHAR NOT NULL,
+  brandName VARCHAR NOT NULL,
+  cpuID INT NOT NULL,
   PRIMARY KEY (cpuID)
 );
 
 CREATE TABLE MOTHERBOARD
 (
-  motherboardID SERIAL NOT NULL,
-  formFactor INT NOT NULL,
-  socketType INT NOT NULL,
+  motherboardID INT NOT NULL,
+  formFactor VARCHAR NOT NULL,
+  socketType VARCHAR NOT NULL,
   numRamSlots INT NOT NULL,
   hasHdmi INT NOT NULL,
   numUsbPorts INT NOT NULL,
-  pcieGeneration INT NOT NULL,
-  price INT NOT NULL,
-  pcbColor INT NOT NULL,
-  brandName INT NOT NULL,
+  pcieGeneration VARCHAR NOT NULL,
+  price NUMERIC NOT NULL,
+  pcbColor VARCHAR NOT NULL,
+  brandName VARCHAR NOT NULL,
   numSockets INT NOT NULL,
-  ramTYPE INT NOT NULL,
+  ramTYPE VARCHAR NOT NULL,
   hasRGB INT,
   numVideoPorts INT NOT NULL,
   numSataPorts INT NOT NULL,
@@ -87,13 +88,13 @@ CREATE TABLE MOTHERBOARD
 
 CREATE TABLE RAM
 (
-  ramID SERIAL NOT NULL,
-  brandName INT NOT NULL,
-  ramType INT NOT NULL,
-  ramSpeed INT NOT NULL,
-  price INT NOT NULL,
+  ramID INT NOT NULL,
+  brandName VARCHAR NOT NULL,
+  ramType VARCHAR NOT NULL,
+  ramSpeed VARCHAR NOT NULL,
+  price NUMERIC NOT NULL,
   storagePerStick INT NOT NULL,
-  pcbColor INT NOT NULL,
+  pcbColor CHAR NOT NULL,
   hasRGB INT,
   laptopOrDekstop INT NOT NULL,
   PRIMARY KEY (ramID)
@@ -101,28 +102,28 @@ CREATE TABLE RAM
 
 CREATE TABLE PC_CASE
 (
-  caseID SERIAL NOT NULL,
+  caseID INT NOT NULL,
   hasRGB INT,
-  supportedMBFormFactor INT NOT NULL,
+  supportedMBFormFactor VARCHAR NOT NULL,
   hasTemperedGlass INT NOT NULL,
   hasDustFilters INT NOT NULL,
-  price INT NOT NULL,
-  color INT NOT NULL,
+  price NUMERIC NOT NULL,
+  color VARCHAR NOT NULL,
   numFansIncluded INT NOT NULL,
-  brandName INT NOT NULL,
+  brandName VARCHAR NOT NULL,
   PRIMARY KEY (caseID)
 );
 
 CREATE TABLE GPU
 (
-  gpuID SERIAL NOT NULL,
-  brandName INT NOT NULL,
+  gpuID INT NOT NULL,
+  brandName VARCHAR NOT NULL,
   vramAmount INT NOT NULL,
-  modelName INT NOT NULL,
-  color INT NOT NULL,
+  modelName VARCHAR NOT NULL,
+  color VARCHAR NOT NULL,
   hasRGB INT,
-  gpuLength INT NOT NULL,
-  gpuHeight INT NOT NULL,
+  gpuLength NUMERIC NOT NULL,
+  gpuHeight NUMERIC NOT NULL,
   numDisplaysSupported INT NOT NULL,
   PRIMARY KEY (gpuID)
 );
@@ -136,7 +137,7 @@ CREATE TABLE storageCompatibility
   FOREIGN KEY (storageID) REFERENCES STORAGE(storageID)
 );
 
-CREATE TABLE processorCompatibility
+CREATE TABLE cpuCompatibility
 (
   motherboardID INT NOT NULL,
   cpuID INT NOT NULL,
@@ -181,7 +182,8 @@ CREATE TABLE PC_CASE_frontPanelPorts
 
 CREATE TABLE SAVED_PC_BUILDS
 (
-  buildID SERIAL NOT NULL,
+  buildID INT NOT NULL,
+  totalPrice NUMERIC NOT NULL,
   userID INT NOT NULL,
   cpuID INT NOT NULL,
   caseID INT NOT NULL,
@@ -195,7 +197,7 @@ CREATE TABLE SAVED_PC_BUILDS
   FOREIGN KEY (motherboardID) REFERENCES MOTHERBOARD(motherboardID)
 );
 
-CREATE TABLE Has
+CREATE TABLE hasRam
 (
   ramID INT NOT NULL,
   buildID INT NOT NULL,
@@ -229,4 +231,3 @@ CREATE TABLE hasGPU
   PRIMARY KEY (gpuID, buildID),
   FOREIGN KEY (gpuID) REFERENCES GPU(gpuID),
   FOREIGN KEY (buildID) REFERENCES SAVED_PC_BUILDS(buildID)
-);
