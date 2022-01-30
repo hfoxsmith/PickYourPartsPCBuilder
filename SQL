@@ -1,6 +1,6 @@
 CREATE TABLE PSU
 (
-  psuID INT NOT NULL,
+  psuID SERIAL NOT NULL,
   color INT NOT NULL,
   efficiencyRating INT NOT NULL,
   isModular INT NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE PSU
 
 CREATE TABLE USERS
 (
-  userID INT NOT NULL,
+  userID SERIAL NOT NULL,
   isAdmin INT NOT NULL,
   phoneNumber INT NOT NULL,
   email VARCHAR NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE USERS
 
 CREATE TABLE COOLING
 (
-  coolingID INT NOT NULL,
+  coolingID SERIAL NOT NULL,
   coolingType INT NOT NULL,
   hasRGB INT,
   size INT NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE COOLING
 
 CREATE TABLE STORAGE
 (
-  storageID INT NOT NULL,
+  storageID SERIAL NOT NULL,
   price INT NOT NULL,
   storageType INT NOT NULL,
   formFactor INT NOT NULL,
@@ -60,13 +60,13 @@ CREATE TABLE PROCESSOR
   price INT NOT NULL,
   modelName INT NOT NULL,
   brandName INT NOT NULL,
-  cpuID INT NOT NULL,
+  cpuID SERIAL NOT NULL,
   PRIMARY KEY (cpuID)
 );
 
 CREATE TABLE MOTHERBOARD
 (
-  motherboardID INT NOT NULL,
+  motherboardID SERIAL NOT NULL,
   formFactor INT NOT NULL,
   socketType INT NOT NULL,
   numRamSlots INT NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE MOTHERBOARD
 
 CREATE TABLE RAM
 (
-  ramID INT NOT NULL,
+  ramID SERIAL NOT NULL,
   brandName INT NOT NULL,
   ramType INT NOT NULL,
   ramSpeed INT NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE RAM
 
 CREATE TABLE PC_CASE
 (
-  caseID INT NOT NULL,
+  caseID SERIAL NOT NULL,
   hasRGB INT,
   supportedMBFormFactor INT NOT NULL,
   hasTemperedGlass INT NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE PC_CASE
 
 CREATE TABLE GPU
 (
-  gpuID INT NOT NULL,
+  gpuID SERIAL NOT NULL,
   brandName INT NOT NULL,
   vramAmount INT NOT NULL,
   modelName INT NOT NULL,
@@ -181,7 +181,7 @@ CREATE TABLE PC_CASE_frontPanelPorts
 
 CREATE TABLE SAVED_PC_BUILDS
 (
-  buildID INT NOT NULL,
+  buildID SERIAL NOT NULL,
   userID INT NOT NULL,
   cpuID INT NOT NULL,
   caseID INT NOT NULL,
