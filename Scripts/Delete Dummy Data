@@ -1,3 +1,23 @@
 DELETE FROM cooling WHERE coolingid = 1;
 
 DELETE FROM storage WHERE storageid = 1;
+
+DELETE FROM public.USERS WHERE id = 1;
+
+DELETE FROM public.PSU WHERE psuID = 1;
+
+DELETE FROM public.COOLING WHERE coolingid = 1;
+
+DELETE FROM public.STORAGE WHERE storageID = 1
+
+DELETE FROM public.PROCESSOR WHERE cpuID = 1;
+
+DELETE FROM public.MOTHERBOARD WHERE motherboardID = 1;
+
+DELETE FROM public.RAM WHERE ramID = 1;
+
+DELETE FROM public.PC_CASE () VALUES ();
+
+DELETE FROM public.GPU () VALUES ();
+
+DELETE FROM public.SAVED_PC_BUILDS () VALUES ();
