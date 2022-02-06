@@ -10,7 +10,7 @@ INSERT INTO public.PROCESSOR (numCores, isMultiThreaded, clockSpeed, socketType,
 
 INSERT INTO public.MOTHERBOARD (motherboardID, formFactor, socketType, numRamSlots, hasHdmi, numUsbPorts, pcieGeneration, price, pcbColor, brandName, numSockets, ramType, hasRGB, numVideoPorts, numSataPorts, numM2Ports) VALUES (1, 'mATX', 'LGA1155', 4, 1, 6, 'PCIe Gen3', 200.00, 'Green', 'Fake', 1, 'DDR3 1333/1600/1866', 1, 2, 6, 0);
 
-INSERT INTO public.RAM () VALUES ();
+INSERT INTO public.RAM (ramID, brandName, ramTpye, ramSpeed, proce, storagePerStick, pcbColor, hasRGB, laptopOrDesktop) VALUES (1, 'Fake', 'DDR3', '1600MHz', 50.00, 4, 'black', 0, 0);
 
 INSERT INTO public.PC_CASE () VALUES ();
 
