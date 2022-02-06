@@ -1,0 +1,3 @@
+Delete FROM cooling WHERE coolingid = 1;
+
+Delete FROM storage WHERE storageid = 1;
