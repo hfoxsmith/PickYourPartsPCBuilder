@@ -14,3 +14,7 @@ INNER JOIN hasStorage ON SAVED_PC_BUILDS.buildID=hasStorage.buildID
 INNER JOIN hasGPU ON SAVED_PC_BUILDS.buildID=hasGPU.buildID
 INNER JOIN hasCooling ON SAVED_PC_BUILDS.buildID=hasCooling.buildID
 INNER JOIN hasRam ON SAVED_PC_BUILDS.buildID=hasRam.buildID
+
+CREATE VIEW VRAM AS
+SELECT * FROM RAM 
+NATURAL JOIN hasRam;
