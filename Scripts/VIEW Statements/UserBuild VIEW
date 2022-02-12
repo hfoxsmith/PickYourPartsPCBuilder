@@ -30,3 +30,7 @@ NATURAL JOIN hasStorage;
 CREATE VIEW VUSERS AS 
 SELECT phoneNumber, email, userName, lastName, firstName 
 FROM USERS;
+
+CREATE VIEW VPSU
+SELECT *
+FROM PSU;
