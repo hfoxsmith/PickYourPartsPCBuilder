@@ -30,10 +30,10 @@ NATURAL JOIN hasCooling;
 
 CREATE VIEW VMOTHERBOARD AS 
 SELECT * FROM MOTHERBOARD
-NATURAL JOIN cpuCompatability
-NATURAL JOIN ramCompatability
-NATURAL JOIN storageCompatability
-NATURAL JOIN caseCompatability;
+NATURAL JOIN cpuCompatibility
+NATURAL JOIN ramCompatibility
+NATURAL JOIN storageCompatibility
+NATURAL JOIN caseCompatibility;
 
 CREATE VIEW UserBuilds AS
 SELECT buildID, cpuID, caseID, psuID, motherboardID
