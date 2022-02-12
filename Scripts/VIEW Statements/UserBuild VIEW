@@ -28,6 +28,13 @@ SELECT *
 FROM COOLING
 NATURAL JOIN hasCooling;
 
+CREATE VIEW VMOTHERBOARD AS 
+SELECT * FROM MOTHERBOARD
+NATURAL JOIN processorCompatability
+NATURAL JOIN ramCompatability
+NATURAL JOIN storageCompatability
+NATURAL JOIN casCompatability;
+
 CREATE VIEW UserBuilds AS
 SELECT buildID, cpuID, caseID, psuID, motherboardID
 FROM SAVED_PC_BUILDS
