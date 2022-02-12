@@ -30,7 +30,7 @@ NATURAL JOIN hasCooling;
 
 CREATE VIEW VMOTHERBOARD AS 
 SELECT * FROM MOTHERBOARD
-NATURAL JOIN processorCompatability
+NATURAL JOIN cpuCompatability
 NATURAL JOIN ramCompatability
 NATURAL JOIN storageCompatability
 NATURAL JOIN caseCompatability;
