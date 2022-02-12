@@ -15,3 +15,5 @@ INSERT INTO public.ramCompatibility (ramID, motherboardID) VALUES (1, 1);
 INSERT INTO public.caseCompatibility (caseID, motherboardID) VALUES (1, 1);
 
 INSERT INTO public.PROCESSOR_compatableRAM (compatableRAM, cpuID) VALUES (1, 1);
+
+INSERT INTO public.PC_CASE_frontPanelPorts (frontPanelPorts, caseID) VALUES (1, 1);
