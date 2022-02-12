@@ -33,7 +33,7 @@ SELECT * FROM MOTHERBOARD
 NATURAL JOIN processorCompatability
 NATURAL JOIN ramCompatability
 NATURAL JOIN storageCompatability
-NATURAL JOIN casCompatability;
+NATURAL JOIN caseCompatability;
 
 CREATE VIEW UserBuilds AS
 SELECT buildID, cpuID, caseID, psuID, motherboardID
