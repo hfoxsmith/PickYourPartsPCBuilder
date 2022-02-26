@@ -2,7 +2,7 @@ INSERT INTO public.hasGPU (gpuID, buildID) VALUES (1, 1);
 
 INSERT INTO public.hasStorage (storageID, buildID) VALUES (1, 1);
 
-INSERT INTO public.hasCooling (coolingID, buildID) VALUES (1, 1);
+INSERT INTO public.hasCooling (coolingID, buildID) VALUES (10, 1);
 
 INSERT INTO public.hasRam (ramID, buildID) VALUES (1, 1);
 
