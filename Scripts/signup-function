@@ -1,0 +1,6 @@
+CREATE OR REPLACE FUNCTION
+signup(email text, password text, username text) RETURNS VOID
+AS $$
+  INSERT INTO users (isadmin, email, password, username) VALUES
+    (0, signup.email, signup.password, signup.username);
+$$ LANGUAGE sql SECURITY DEFINER;
