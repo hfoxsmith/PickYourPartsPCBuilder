@@ -15,3 +15,29 @@ BEGIN
         VALUES(NEW.buildid,OLD.totalprice,NEW.totalprice);
     END IF;
 END;
+
+#############################################################################
+
+
+CREATE TABLE totalPriceChange (
+    build_id INT,
+    changed_at TIMESTAMP,
+    old_totalprice DECIMAL(8 , 2 ),
+    new_totalprice DECIMAL(8 , 2 ),
+    PRIMARY KEY (build_id , changed_at)
+);
+
+CREATE OR REPLACE FUNCTION totalPriceChange()
+RETURNS TRIGGER AS $$
+BEGIN
+   IF NEW.totalprice <> OLD.totalprice THEN
+	INSERT INTO totalPriceChange(buildid,old_totalprice,new_totalprice)
+        VALUES(NEW.buildid,OLD.totalprice,NEW.totalprice);
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER before_update_price 
+  BEFORE UPDATE ON saved_pc_builds
+FOR EACH ROW
+EXECUTE PROCEDURE totalPriceChange()
