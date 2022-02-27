@@ -1,6 +1,0 @@
-CREATE OR REPLACE FUNCTION
-signup(email text, password text, username text) RETURNS VOID
-AS $$
-  INSERT INTO users (isadmin, phonenumber, email, password, username, lastname, firstname) VALUES
-    (0, 0000000000, signup.email, signup.password, signup.username, '-', '-');
-$$ LANGUAGE sql SECURITY DEFINER;
