@@ -1,9 +1,15 @@
 <template>
   <div>
-    <b-jumbotron>
-      <h1 v-flex justify-center>Pick Your Parts PC Builder</h1>
-	<button>Login</button>
-    </b-jumbotron>
+    <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar-brand>Pick Your Parts PC Builder</b-navbar-brand> 
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-collapse id="nav-collapse" is-nav>
+	<b-navbar-nav>
+		<b-button size="sm" type="submit" href="#/login">Login</b-button>
+		<b-button size="sm" type="submit" href="#/Register">Register</b-button>
+	</b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
     <br />
     <div v-if="loading">Loading PC Goodies....</div>
     <ul v-else>
