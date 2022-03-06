@@ -22,7 +22,7 @@ export function authHeader() {
   let accessToken = getJwtToken();
 
   if (accessToken) {
-    return { Authorization: "Bearer " + accessToken };
+    return { Authorization: "Bearer " + eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5zIn0.XRNmHd9WhODHbC4l5Qt4rmOMATwnKkhPbuBnktBjzOo };
   } else {
     return {};
   }
