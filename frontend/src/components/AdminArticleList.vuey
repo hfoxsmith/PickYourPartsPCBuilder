@@ -1,0 +1,112 @@
+<template>
+  <div>
+    <div v-if="loading">Loading articles....</div>
+    <router-link to="admin/add" tag="b-button" class="float-right"
+      >Add article</router-link
+    >
+    <br /><br />
+    <b-table-simple hover small caption-top responsive>
+      <b-thead>
+        <b-tr>
+          <b-th>Build ID</b-th>
+          <b-th>CPU</b-th>
+          <b-th>Case</b-th>
+          <b-th>PSU</b-th>
+	  <b-th>Motherboard</b-th>
+	  <b-th>RAM</b-th>
+	  <b-th>Cooling Device</b-th>
+	  <b-th>Storage Device</b-th>
+	  <b-th>GPU</b-th>
+        </b-tr>
+      </b-thead>
+      <b-tbody>
+        <b-tr v-for="build in builds" :key="build.buildid">
+          <b-td>{{ build.buildid }}</b-td>
+          <b-td><b-button variant="outline-primary" @click="() => getCPU(build.cpuid)">{{ build.modelnamecpu }}</b-button></b-td>
+          <b-td>{{ build.modelnamecase }}</b-td>
+	  <b-td>{{ build.modelnamepsu }}</b-td>
+	  <b-td>{{ build.modelnamemb }}</b-td>
+	  <b-td>{{ build.modelnameram }}</b-td>
+	  <b-td>{{ build.modelnamecool }}</b-td>
+	  <b-td>{{ build.modelnamehdd }}</b-td>
+	  <b-td>{{ build.modelnamegpu }}</b-td>
+        </b-tr>
+      </b-tbody>
+    </b-table-simple>
+    <b-table-simple hover small caption-top responsive>
+      <b-thead>
+	  <b-td>CPU ID</b-td> 
+      </b-thead>
+      <b-tbody>
+        <b-tr v-for="temp in temp" :key="temp.cpuid">
+          <b-td>{{ temp[0] }}</b-td>
+          <b-td>{{ temp[1] }}</b-td>
+          <b-td>{{ temp[2] }}</b-td>
+          <b-td>{{ temp[3] }}</b-td>
+          <b-td>{{ temp[4] }}</b-td>
+          <b-td>{{ temp[5] }}</b-td>
+          <b-td>{{ temp[6] }}</b-td>
+          <b-td>{{ temp[7] }}</b-td>
+          <b-td>{{ temp[8] }}</b-td>
+          <b-td>{{ temp[9] }}</b-td>
+        </b-tr>
+      </b-tbody>
+    </b-table-simple>
+  </div>
+</template>
+
+<script>
+import Api from "../api";
+
+export default {
+  name: "AdminArticleList",
+  data: function () {
+    return {
+      loading: false,
+      builds: [],
+      temp: [],
+    };
+  },
+  created: function () {
+    this.loadBuilds();
+  },
+
+  methods: {
+    loadBuilds() {
+      this.loading = true;
+      this.builds = [];
+      Api.getUserBuilds().then((res) => {
+        this.builds = res.data;
+        this.loading = false;
+      });
+    },
+    getCPU(cpuid) {
+      this.loading = true;
+      this.temp = [];
+      Api.getCPUID().then((res) => {
+        this.temp = res.data;
+        this.loading = false;
+      });
+    },
+    publishArticle(articleid) {
+      Api.publishArticle(articleid)
+        .then(() => {
+          this.loadArticles();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    deleteArticle(articleid) {
+      Api.deleteArticle(articleid)
+        .then(() => {
+          this.loadArticles();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+};
+</script>

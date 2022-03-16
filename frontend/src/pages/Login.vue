@@ -1,19 +1,19 @@
 <template>
   <div class="col-md-12">
     <div class="card card-container">
-      <img
+   <!--   <img
         id="profile-img"
         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
         class="profile-img-card"
-      />
+      /> -->
       <form name="form" @submit.prevent="handleLogin">
         <div class="form-group">
-          <label for="email">Email</label>
+          <label  for="username">Username</label>
           <input
-            v-model="email"
+            v-model="username"
             type="text"
             class="form-control"
-            name="email"
+            name="username"
           />
         </div>
         <div class="form-group">
@@ -52,7 +52,7 @@ export default {
   name: "Login",
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       loading: false,
       message: "",
@@ -62,7 +62,9 @@ export default {
     handleLogin() {
       this.loading = true;
       this.message = "";
-      Api.login(this.email, this.password)
+
+      var crypto = require('crypto');
+      Api.login(this.username, crypto.createHash('md5').update(this.password).digest('hex'))
         .then((res) => {
           setJwtToken(res.data[0].token);
           if (this.$route.params.nextUrl != null) {
@@ -101,8 +103,8 @@ label {
   margin-top: 50px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  -moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
@@ -115,5 +117,11 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+label {
+
+  color: black;
+
 }
 </style>

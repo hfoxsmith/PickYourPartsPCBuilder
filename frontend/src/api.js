@@ -1,15 +1,45 @@
 import axios from "axios";
 import { authHeader, getJwtToken, getUserIdFromToken } from "./auth";
 
-const API_URL = "http://52.53.149.231:8000";
+const API_URL = "http://54.153.113.42:8000";
 
 class Api {
-  getArticles() {
-    return axios.get(API_URL + "/articles", {});
+
+  getUserBuilds() {
+          let temp = getUserIdFromToken(getJwtToken());
+    return  axios.get(API_URL + `/userbuilds?userid=eq.${getUserIdFromToken(getJwtToken())}`);
   }
 
-  getArticleDetail(id) {
-    return axios.get(API_URL + `/articles?articleid=eq.${id}`);
+  getCPUID(id) {
+   return  axios.get(API_URL + `/processor?cpu.id=eq.${id}`);
+  }
+
+  getCaseID(id) {                                                                                                                                                         
+   return  axios.get(API_URL + `/pc_case?case.id=eq.${id}`);
+  }
+
+  getPSUID(id) {
+   return  axios.get(API_URL + `/psu?psu.id=eq.${id}`);
+  }
+
+  getMotherboardID(id) {                                                                                                                                                        
+    return axios.get(API_URL + `/motherboard?motherboard.id=eq.${id}`); 
+  } 
+
+  getRAMID(id) {                  
+    return  axios.get(API_URL + `/ram?ram.id=eq.${id}`);                                                                                                                           
+  } 
+
+  getCoolingID(id) {
+   return  axios.get(API_URL + `/cooling?cooling.id=eq.${id}`);
+  }
+
+  getStorageID(id) {
+    return axios.get(API_URL + `/storage?storage.id=eq.${id}`);
+  }
+
+  getGPUID(id) {
+   return  axios.get(API_URL + `/gpu?gpu.id=eq.${id}`);
   }
 
   addArticle(article) {
@@ -52,13 +82,12 @@ class Api {
     );
   }
 
-  login(email, password) {
-    return axios.post(API_URL + "/rpc/login", { email, password });
+  login(username, password) {
+    return axios.post(API_URL + "/rpc/login", { username, password });
   }
 
-  signup(email, password, name) {
-    return axios.post(API_URL + "/rpc/signup", { email, password, name });
-  }
+  signup( email, password, username, lastname, firstname) {
+    return axios.post(API_URL + "/rpc/signup", { email, password, username, lastname, firstname });  }
 }
 
 export default new Api();

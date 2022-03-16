@@ -1,24 +1,19 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand>Pick Your Parts PC Builder</b-navbar-brand> 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-      <b-collapse id="nav-collapse" is-nav>
-	<b-navbar-nav>
-		<b-button size="sm" type="submit" href="#/login">Login</b-button>
-		<b-button size="sm" type="submit" href="#/Register">Register</b-button>
-	</b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
-    <br />
-    <div v-if="loading">Loading PC Goodies....</div>
-    <ul v-else>
-      <li v-for="article in articles" :key="article.articleid">
-        <router-link :to="`article/${article.articleid}`">{{
-          article.title
-        }}</router-link>
-      </li>
-    </ul>
+    <br>
+    <h1 class="welcome"><strong>Welcome to Pick Your Parts PC Builder!</strong></h1>
+    <hr>
+    <h4 class="welcome">
+      We aim to help all PC enthusiasts in finding the right parts for their PC build!
+      Our system will check for part compatability to ensure that your chosen parts will
+      work together. You can be assured that our system will save you time, effort, and stress! 
+    </h4>
+    <hr>
+    <h4 class="welcome">
+      Please make an account to get started with your PC build:      
+      <b-button class="pagebtn" size="lg" type="button" btn-primary href="#/Register">Register Here</b-button>
+    </h4>
+    <router-link></router-link>
   </div>
 </template>
 
@@ -37,9 +32,25 @@ export default {
   created: function () {
     this.loading = true;
     Api.getArticles().then((res) => {
-      this.articles = res.data;
-      this.loading = false;
-    });
+     this.articles = res.data;
+     this.loading = false;
+   });
   },
 };
 </script>
+
+<style scoped>
+
+.welcome {
+
+  text-align: center;
+
+}
+
+.pagebtn {
+
+  color: gold;
+  text-align: center;
+}
+
+</style>
