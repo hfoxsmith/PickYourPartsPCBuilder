@@ -13,7 +13,6 @@
             <b-th id="border">Cooling Device</b-th>
             <b-th id="border">Storage Device</b-th>
             <b-th id="border">GPU</b-th>
-       <!-- <b-th id="border">Total Price</b-th> -->
             <b-th id="border">--------------------</b-th>
         </b-tr>
       </b-thead>
@@ -29,7 +28,6 @@
             <b-td><b-button id="styleThese" variant="default" @click="() => getCooling(build.coolingid)">{{ build.modelnamecool }}</b-button></b-td>
             <b-td><b-button id="styleThese" variant="defualt" @click="() => getStorage(build.storageid)">{{ build.modelnamehdd }}</b-button></b-td>
             <b-td><b-button id="styleThese" variant="default" @click="() => getGPU(build.gpuid)">{{ build.modelnamegpu }}</b-button></b-td>
-       <!-- <b-td><b-button id="styleThese" variant="defualt" >{{ build.totalprice }}</b-button></b-td> --> 
             <b-td><b-button id="styleThese" variant="danger" @click="() => deleteBuild(build.buildid)">Delete Build</b-button></b-td>
         </b-tr>
       </b-tbody>
@@ -140,9 +138,8 @@ export default {
       Api.deleteBuild(buildid).then((res) => {
         this.temp = res.data;
         this.loading = false;
-        location.reload(true);
       });
-    },
+    }, 
     updateBuild(buildid) {
       let bID = buildid;
       localStorage.setItem("build",bID);

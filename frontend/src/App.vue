@@ -7,7 +7,7 @@
         <b-navbar-nav>
           <b-button style="color:white; font-weight:bold;" v-if="notLoggedIn" size="lg" type="button" variant="btn-default" href="#/login">Login</b-button>
           <b-button style="color:white; font-weight:bold;" v-if="notLoggedIn" size="lg" type="button" variant="btn-default" href="#/Register">Register</b-button>
-          <b-button style="color:white; font-weight:bold;" v-if="isLoggedIn" size="lg" type="button" variant="btn-default" href="#/">Create</b-button>
+          <b-button style="color:white; font-weight:bold;" v-if="isLoggedIn" size="lg" type="button" variant="btn-default" href="#/article">Create</b-button>
           <b-button style="color:white; font-weight:bold;" v-if="isLoggedIn" size="lg" type="button" variant="btn-default" href="#/admin">Builds</b-button>
           <b-button style="color:white; font-weight:bold;" v-if="isLoggedIn" v-on:click="refresh()" size="lg" type="button" variant="btn-default" href="#/logout">Logout</b-button>
         </b-navbar-nav>
@@ -50,10 +50,6 @@ export default {
       }
     },
   },
-  //created: {
-  //  isLoggedIn(),
-  //  notLoggedIn(),
-  //},
   methods: {
     refresh() {
       window.location.reload();

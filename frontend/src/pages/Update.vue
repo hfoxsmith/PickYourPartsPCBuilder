@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Select PC Parts</h2>
+    <h2>Edit Your Build</h2>
     <br>
     <b-table-simple hover small caption-top responsive>
        <b-thead><strong>Motherboard</strong>
@@ -86,7 +86,7 @@
         </b-tbody>
     </b-table-simple>
 <br>
-    <b-table-simple hover small caption-top responsive>
+    <!--<b-table-simple hover small caption-top responsive>
         <b-thead><strong>RAM</strong>
           <b-tr>
             <b-th></b-th>
@@ -156,7 +156,7 @@
             <b-td>${{ storage.price }}</b-td>
           </b-tr>
         </b-tbody>
-      </b-table-simple>
+      </b-table-simple>-->
 <br>
       <b-table-simple hover small caption-top responsive>
         <b-thead><strong>Power Supply</strong>
@@ -191,7 +191,7 @@
         </b-tbody>
       </b-table-simple>
 <br>
-      <b-table-simple hover small caption-top responsive>
+      <!--<b-table-simple hover small caption-top responsive>
         <b-thead><strong>Graphics Card</strong>
           <b-tr>
             <b-th></b-th>
@@ -261,7 +261,7 @@
             <b-td>${{ cooling.price }}</b-td>
           </b-tr>
         </b-tbody>
-      </b-table-simple>
+      </b-table-simple>-->
 <br>
       <b-table-simple hover small caption-top responsive>
         <b-thead><strong>PC Case</strong>
@@ -302,18 +302,19 @@
         </b-tbody>
       </b-table-simple>
 <br>
-      <b-button variant="primary" @click="() => createBuild()">Create</b-button>              
+      <b-button variant="primary" @click="() => updateBuild(getbID())">Update Build</b-button>              
   </div>
 </template>
 
 <script>
 import Api from "../api";
 export default {
-  name: "Article",
+  name: "Update",
   data: function () {
     return {
       loading: false,
       Url: "",
+      
       motherboard: [],
       cpu: [],
       ram: [],
@@ -333,6 +334,7 @@ export default {
     };
   },
   created: function () {
+   // this.loadBuilds();
     this.loadMotherboard();
     this.loadCPU();
     this.loadRam();
@@ -408,38 +410,44 @@ export default {
         this.loading = false;
       });
     },
-    createBuild() {
+    updateBuild(buildid) {
       this.loading = true;
       this.buildlocation = '';
-      Api.createBuild(this.rcpu, this.rcase, this.rpsu, this.rmotherboard).then((res) => {
-        this.Url = res.headers['location'];
-        this.Url = (this.Url).substr(28);
-        console.log(this.Url);
-        const id = parseInt(this.Url);
-        console.log(id);
-        this.gpuTables(id);       
+      let tmp = buildid;
+      console.log(tmp);
+      Api.updateBuild(buildid, this.rcpu, this.rcase, this.rpsu, this.rmotherboard).then((res) => {
+        //this.Url = res.headers['location'];
+        //const id = parseInt(this.Url);
+        console.log(buildid);
+        //this.gpuTables(buildid);
       });
     },
-    gpuTables(id) {
-       Api.addBuildGPU(this.rgpu, id).then((res) => { 
-         this.coolingTables(id);
+    gpuTables(buildid) {
+       Api.updateBuildGPU(this.rgpu, buildid).then((res) => {
+         this.coolingTables(buildid);
        });
     },
-    coolingTables(id) {
-       Api.addBuildCooling(this.rcooling, id).then((res) => { 
-         this.storageTables(id);
+    coolingTables(buildid) {
+       Api.updateBuildCooling(this.rcooling, buildid).then((res) => {
+         this.storageTables(buildid);
        });
     },
-    storageTables(id) {
-       Api.addBuildStorage(this.rstorage, id).then((res) => {
-         this.ramTable(id);
+    storageTables(buildid) {
+       Api.updateBuildStorage(this.rstorage, buildid).then((res) => {
+         this.ramTable(buildid);
        });
     },
-    ramTable(id) {
-       Api.addBuildRam(this.rram, id).then((res) => {
+    ramTable(buildid) {
+       Api.updateBuildRam(this.rram, buildid).then((res) => {
          setTimeout(() => { this.$router.push('admin'); }, 3000);
        });
     },
+
+    getbID() {
+      let bID = localStorage.getItem("build");
+      console.log(bID);
+      return bID;
+    }
   },
 };
 </script>

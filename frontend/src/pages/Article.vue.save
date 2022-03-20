@@ -1,9 +1,7 @@
 <template>
   <div>
-    <h2>Select PC Parts</h2>
-    <br>
     <b-table-simple hover small caption-top responsive>
-       <b-thead><strong>Motherboard</strong>
+       <b-thead>Motherboard
           <b-tr>
             <b-th></b-th>
             <b-th>Motherboard ID</b-th>
@@ -52,9 +50,8 @@
           </b-tr>
         </b-tbody>      
     </b-table-simple>
-<br>
     <b-table-simple hover small caption-top responsive>
-        <b-thead><strong>Processor</strong>
+        <b-thead>Processor
           <b-tr>
             <b-th></b-th>
             <b-th>CPU ID</b-th>
@@ -85,18 +82,17 @@
           </b-tr>
         </b-tbody>
     </b-table-simple>
-<br>
     <b-table-simple hover small caption-top responsive>
-        <b-thead><strong>RAM</strong>
+        <b-thead>RAM Memeory
           <b-tr>
             <b-th></b-th>
             <b-th>RAM ID</b-th>
-            <b-th>Model Name</b-th>
-            <b-th>Brand Name</b-th>
-            <b-th>RAM Type</b-th>
-            <b-th>RAM Speed</b-th>
-            <b-th>Memory Per Stick</b-th>
-            <b-th>PCB Color</b-th>
+            <b-th>modelnameram</b-th>
+            <b-th>brandname</b-th>
+            <b-th>ramtype</b-th>
+            <b-th>ramspeed</b-th>
+            <b-th>storageperstick</b-th>
+            <b-th>pcbcolor</b-th>
             <b-th>hasrgb</b-th>
             <b-th>laptopordesktop</b-th>
             <b-th>price</b-th>
@@ -122,20 +118,19 @@
           </b-tr>
         </b-tbody>
       </b-table-simple>
-<br>
       <b-table-simple hover small caption-top responsive>
-        <b-thead><strong>Storage</strong>
+        <b-thead>
           <b-tr>
             <b-th></b-th>
-            <b-th>Storage ID</b-th>
-            <b-th>Model Name</b-th>
-            <b-th>Storage Type</b-th>
-            <b-th>Form Factor</b-th>
-            <b-th>Connector Type</b-th>
-            <b-th>Storage Size</b-th>
-            <b-th>Theoretical Speed</b-th>
-            <b-th>Brand Name</b-th>
-            <b-th>Price</b-th>
+            <b-th>storagedid</b-th>
+            <b-th>modelnamehdd</b-th>
+            <b-th>storagetype</b-th>
+            <b-th>formfactor</b-th>
+            <b-th>connectortype</b-th>
+            <b-th>storageamount</b-th>
+            <b-th>theoreticalspeed</b-th>
+            <b-th>brandname</b-th>
+            <b-th>price</b-th>
           </b-tr>
         </b-thead>
         <b-tbody>
@@ -157,19 +152,18 @@
           </b-tr>
         </b-tbody>
       </b-table-simple>
-<br>
       <b-table-simple hover small caption-top responsive>
-        <b-thead><strong>Power Supply</strong>
+        <b-thead>
           <b-tr>
             <b-th></b-th>
-            <b-th>PSU ID</b-th>
-            <b-th>Model Name</b-th>
-            <b-th>Color</b-th>
-            <b-th>Efficiency Rating</b-th>
-            <b-th>Modular</b-th>
-            <b-th>Watts</b-th>
-            <b-th>Brand Name</b-th>
-            <b-th>Price</b-th>
+            <b-th>psuid</b-th>
+            <b-th>modelnamepsu</b-th>
+            <b-th>color</b-th>
+            <b-th>efficiencyrating</b-th>
+            <b-th>ismodular</b-th>
+            <b-th>watts</b-th>
+            <b-th>brandname</b-th>
+            <b-th>price</b-th>
           </b-tr>
         </b-thead>
         <b-tbody>
@@ -190,20 +184,19 @@
           </b-tr>
         </b-tbody>
       </b-table-simple>
-<br>
       <b-table-simple hover small caption-top responsive>
-        <b-thead><strong>Graphics Card</strong>
+        <b-thead>
           <b-tr>
             <b-th></b-th>
-            <b-th>GPU ID</b-th>
-            <b-th>Model Name</b-th>
-            <b-th>Brand Name</b-th>
-            <b-th>VRAM</b-th>
-            <b-th>Color</b-th>
-            <b-th>RGB</b-th>
-            <b-th>GPU Length</b-th>
-            <b-th>GPU Height</b-th>
-            <b-th># Displays</b-th>
+            <b-th>gpuid</b-th>
+            <b-th>modelnamegpu</b-th>
+            <b-th>brandname</b-th>
+            <b-th>vramamount</b-th>
+            <b-th>color</b-th>
+            <b-th>hasrgb</b-th>
+            <b-th>gpulength</b-th>
+            <b-th>gpuheight</b-th>
+            <b-th>numdisplayssupported</b-th>
           </b-tr>
         </b-thead>
         <b-tbody>
@@ -225,21 +218,20 @@
           </b-tr>
         </b-tbody>
       </b-table-simple>
-<br>
       <b-table-simple hover small caption-top responsive>
-        <b-thead><strong>Cooling Solutions</strong>
+        <b-thead>
           <b-tr>
             <b-th></b-th>
-            <b-th>Part ID</b-th>
-            <b-th>Model Name</b-th>
-            <b-th>Cooling Type</b-th>
-            <b-th>RGB</b-th>
-            <b-th>Size</b-th>
-            <b-th>Fan Connector</b-th>
-            <b-th>Brand Name</b-th>
-            <b-th>Color</b-th>
-            <b-th>Num Fans</b-th>
-            <b-th>Price</b-th>
+            <b-th>coolingid</b-th>
+            <b-th>modelnamecool</b-th>
+            <b-th>coolingtype</b-th>
+            <b-th>hasrgb</b-th>
+            <b-th>size</b-th>
+            <b-th>fanconnectortype</b-th>
+            <b-th>brandname</b-th>
+            <b-th>color</b-th>
+            <b-th>numfans</b-th>
+            <b-th>price</b-th>
           </b-tr>
         </b-thead>
         <b-tbody>
@@ -262,22 +254,21 @@
           </b-tr>
         </b-tbody>
       </b-table-simple>
-<br>
       <b-table-simple hover small caption-top responsive>
-        <b-thead><strong>PC Case</strong>
+        <b-thead>
           <b-tr>
             <b-th></b-th>
-            <b-th>Case ID</b-th>
-            <b-th>Model Name</b-th>
-            <b-th>RGB</b-th>
-            <b-th>Form Factor</b-th>
-            <b-th>Tempered Glass</b-th>
-            <b-th>Dust Filters</b-th>
-            <b-th>Color</b-th>
-            <b-th>Fans Included</b-th>
-            <b-th>Brand Name</b-th>
-            <b-th>Front Panel</b-th>
-            <b-th>Price</b-th>
+            <b-th>caseid</b-th>
+            <b-th>modelnamecase</b-th>
+            <b-th>hasrgb</b-th>
+            <b-th>supportedmbformfactor</b-th>
+            <b-th>hastemperedglass</b-th>
+            <b-th>hasdustfilters</b-th>
+            <b-th>color</b-th>
+            <b-th>numfanincluded</b-th>
+            <b-th>brandname</b-th>
+            <b-th>frontpanelports</b-th>
+            <b-th>price</b-th>
           </b-tr>
         </b-thead>
         <b-tbody>
@@ -301,7 +292,6 @@
           </b-tr>
         </b-tbody>
       </b-table-simple>
-<br>
       <b-button variant="primary" @click="() => createBuild()">Create</b-button>              
   </div>
 </template>
@@ -314,6 +304,7 @@ export default {
     return {
       loading: false,
       Url: "",
+      build: 0,
       motherboard: [],
       cpu: [],
       ram: [],
@@ -413,43 +404,29 @@ export default {
       this.buildlocation = '';
       Api.createBuild(this.rcpu, this.rcase, this.rpsu, this.rmotherboard).then((res) => {
         this.Url = res.headers['location'];
-        this.Url = (this.Url).substr(28);
-        console.log(this.Url);
-        const id = parseInt(this.Url);
-        console.log(id);
-        this.gpuTables(id);       
+        this.build = this.Url * 1;
+        console.log(this.build);
+        this.gpuTables();
       });
     },
-    gpuTables(id) {
-       Api.addBuildGPU(this.rgpu, id).then((res) => { 
-         this.coolingTables(id);
+    gpuTables() {
+       Api.addBuildGPU(this.rgpu, this.build).then((res) => { 
+         this.coolingTables();
        });
     },
-    coolingTables(id) {
-       Api.addBuildCooling(this.rcooling, id).then((res) => { 
-         this.storageTables(id);
+    coolingTables() {
+       Api.addBuildCooling(this.rcooling, this.build).then((res) => { 
+         this.storageTables();
        });
     },
-    storageTables(id) {
-       Api.addBuildStorage(this.rstorage, id).then((res) => {
-         this.ramTable(id);
+    storageTables() {
+       Api.addBuildStorage(this.rstorage, this.build).then((res) => {
+         this.ramTable();
        });
     },
-    ramTable(id) {
-       Api.addBuildRam(this.rram, id).then((res) => {
-         setTimeout(() => { this.$router.push('admin'); }, 3000);
-       });
+    ramTable() {
+       Api.addBuildRam(this.rram, this.build).then((res) => { });
     },
   },
 };
 </script>
-
-<style scoped>
-
-h2 {
-
-  text-align: center;
-
-}
-
-</style>

@@ -1,12 +1,11 @@
 import axios from "axios";
 import { authHeader, getJwtToken, getUserIdFromToken } from "./auth";
 
-const API_URL = "http://54.153.113.42:8000";
+const API_URL = "http://54.215.186.101:8000";
 
 class Api {
 
   getUserBuilds() {
-          let temp = getUserIdFromToken(getJwtToken());
     return  axios.get(API_URL + `/userbuilds?userid=eq.${getUserIdFromToken(getJwtToken())}`);
   }
 
@@ -14,7 +13,7 @@ class Api {
    return  axios.get(API_URL + `/processor?cpu.id=eq.${id}`);
   }
 
-  getCaseID(id) {                                                                                                                                                         
+  getCaseID(id) {
    return  axios.get(API_URL + `/pc_case?case.id=eq.${id}`);
   }
 
@@ -22,13 +21,13 @@ class Api {
    return  axios.get(API_URL + `/psu?psu.id=eq.${id}`);
   }
 
-  getMotherboardID(id) {                                                                                                                                                        
-    return axios.get(API_URL + `/motherboard?motherboard.id=eq.${id}`); 
-  } 
+  getMotherboardID(id) {
+    return axios.get(API_URL + `/motherboard?motherboard.id=eq.${id}`);
+  }
 
-  getRAMID(id) {                  
-    return  axios.get(API_URL + `/ram?ram.id=eq.${id}`);                                                                                                                           
-  } 
+  getRAMID(id) {
+    return  axios.get(API_URL + `/ram?ram.id=eq.${id}`);
+  }
 
   getCoolingID(id) {
    return  axios.get(API_URL + `/cooling?cooling.id=eq.${id}`);
@@ -42,32 +41,171 @@ class Api {
    return  axios.get(API_URL + `/gpu?gpu.id=eq.${id}`);
   }
 
-  addArticle(article) {
+  getMotherboard() {
+     return axios.get(API_URL + `/motherboard?motherboardid`, {});
+  }
+
+  getCPU() {
+    return axios.get(API_URL + `/processor?cpuid`, {});
+  }
+
+  getCase() {
+        return  axios.get(API_URL + `/pc_case?caseid`, {});
+  }
+
+  getPSU() {
+        return  axios.get(API_URL + `/psu?psuid`, {});
+  }
+
+  getRam() {
+        return  axios.get(API_URL + `/ram?ramid`, {});
+  }
+
+  getCooling() {
+        return  axios.get(API_URL + `/cooling?coolingid`, {});
+  }
+
+  getStorage() {
+        return  axios.get(API_URL + `/storage?storageid`, {});
+  }
+
+  getGPU() {
+       return   axios.get(API_URL + `/gpu?gpuid`, {});
+  }
+
+  getStorageComp(id)  {
+     return axios.get(API_URL + `/storageCompatibility?motherboardid=eq.${id}`);
+  }
+
+  getCPUComp(id) {
+    return axios.get(API_URL + `/cpucompatibility?motherboardid=eq.${id}`);
+  }
+
+  getRAMComp(id) {
+    return axios.get(API_URL + `/ramCompatibility?motherboardid=eq.${id}`);
+  }
+
+  getCaseComp(id) {
+    return axios.get(API_URL + `/caseCompatibility?motherboardid=eq.${id}` );
+  }
+
+  createBuild(rcpu, rcase, rpsu, rmotherboard) {
     return axios.post(
-      API_URL + "/articles",
+      API_URL + `/saved_pc_builds`,
       {
-        ...article,
-        // add user id from JWT token
-        userid: getUserIdFromToken(getJwtToken()),
+         'totalprice': 0,
+         'userid': getUserIdFromToken(getJwtToken()),
+         'cpuid': rcpu,
+         'caseid': rcase,
+         'psuid': rpsu,
+         'motherboardid': rmotherboard,
       },
       {
         headers: authHeader(),
       }
     );
   }
+  
+  addBuildGPU(rgpu, rbuildid) {
+    return axios.post( 
+        API_URL + `/hasgpu`, 
+        { 
+          'gpuid': rgpu, 
+          'buildid': rbuildid,
+        }, 
+        { headers: authHeader(), } );
+  }
 
-  updateArticle(article) {
+  addBuildStorage(rstorage, rbuildid) {
+    return axios.post( 
+        API_URL + "/hasstorage", 
+        { 
+          'storageid': rstorage,
+          'buildid': rbuildid, 
+        }, 
+        { headers: authHeader(), } ); 
+  }
+
+  addBuildCooling(rcooling, rbuildid) {
+    return axios.post( 
+        API_URL + "/hascooling", 
+        { 
+          'coolingid': rcooling,
+          'buildid': rbuildid, 
+        }, 
+        { headers: authHeader(), } );
+  }
+
+  addBuildRam(rram, rbuildid) {
+    return axios.post( 
+        API_URL + "/hasram", 
+        { 
+          'ramid': rram,
+          'buildid': rbuildid,
+        }, 
+        { headers: authHeader(), } );
+  }
+
+ updateBuildGPU(rgpu, rbuildid) {
+    return axios.patch( 
+        API_URL + `/hasgpu`, 
+        { 
+          'gpuid': rgpu, 
+          'buildid': rbuildid,
+        }, 
+        { headers: authHeader(), } );
+  }
+
+  updateBuildStorage(rstorage, rbuildid) {
+    return axios.patch( 
+        API_URL + "/hasstorage", 
+        { 
+          'storageid': rstorage,
+          'buildid': rbuildid, 
+        }, 
+        { headers: authHeader(), } ); 
+  }
+
+  updateBuildCooling(rcooling, rbuildid) {
+    return axios.patch( 
+        API_URL + "/hascooling", 
+        { 
+          'coolingid': rcooling,
+          'buildid': rbuildid, 
+        }, 
+        { headers: authHeader(), } );
+  }
+
+  updateBuildRam(rram, rbuildid) {
+    return axios.patch( 
+        API_URL + "/hasram", 
+        { 
+          'ramid': rram,
+          'buildid': rbuildid,
+        }, 
+        { headers: authHeader(), } );
+  }
+
+  updateBuild(buildid, rcpu, rcase, rpsu, rmotherboard) {
     return axios.patch(
-      API_URL + `/articles?articleid=eq.${article.articleid}`,
-      article,
+      API_URL + `/saved_pc_builds?buildid=eq.${buildid}`,
+      {
+         'totalprice': 10000,
+         'userid': getUserIdFromToken(getJwtToken()),
+         'cpuid': rcpu,
+         'caseid': rcase,
+         'psuid': rpsu,
+         'motherboardid': rmotherboard,
+      },
       {
         headers: authHeader(),
       }
     );
+
   }
 
-  deleteArticle(id) {
-    return axios.delete(API_URL + `/articles?articleid=eq.${id}`, {
+  deleteBuild(id) {
+    return axios.delete(API_URL + `/saved_pc_builds?buildid=eq.${id}`, {
       headers: authHeader(),
     });
   }

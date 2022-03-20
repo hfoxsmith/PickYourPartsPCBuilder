@@ -1,11 +1,6 @@
 <template>
   <div class="col-md-12">
     <div class="card card-container">
-   <!--   <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      /> -->
       <form name="form" @submit.prevent="handleLogin">
         <div class="form-group">
           <label  for="username">Username</label>
@@ -26,11 +21,11 @@
           />
         </div>
         <div class="form-group">
-          <button class="btn btn-primary btn-block" :disabled="loading">
-            <span
+          <button class="btn btn-primary btn-block">
+            <!--<span
               v-show="loading"
               class="spinner-border spinner-border-sm"
-            ></span>
+            ></span>-->
             <span>Login</span>
           </button>
         </div>
@@ -60,8 +55,6 @@ export default {
   },
   methods: {
     handleLogin() {
-      this.loading = true;
-      this.message = "";
 
       var crypto = require('crypto');
       Api.login(this.username, crypto.createHash('md5').update(this.password).digest('hex'))
@@ -81,6 +74,9 @@ export default {
           this.loading = false;
         });
     },
+    refresh() {
+      window.location.reload();
+    }
   },
 };
 </script>

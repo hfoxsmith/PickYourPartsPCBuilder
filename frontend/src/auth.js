@@ -7,7 +7,7 @@ export function getJwtToken() {
 export function getUserIdFromToken(token) {
   const decoded = jwt_decode(token);
   console.log(decoded);
-  return decoded.user_id;
+  return decoded.isadmin;
 }
 
 export function setJwtToken(token) {
@@ -23,7 +23,9 @@ export function authHeader() {
 
   if (accessToken) {
     return { Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5zIn0.XRNmHd9WhODHbC4l5Qt4rmOMATwnKkhPbuBnktBjzOo" };
+    // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjF9.tX216fldKbYbkSgcx7vw_ghCp0mNYityXSaDYWu7iZo" };  
+    //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5zIn0.XRNmHd9WhODHbC4l5Qt4rmOMATwnKkhPbuBnktBjzOo" };
   } else {
-    return {};
+    return "unauthorized access";
   }
 }

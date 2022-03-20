@@ -12,6 +12,7 @@ import Article from "./pages/Article";
 import AdminArticleAdd from "./components/AdminArticleAdd";
 import AdminArticleList from "./components/AdminArticleList";
 import AdminArticleEdit from "./components/AdminArticleEdit";
+import Update from "./pages/Update.vue"
 
 Vue.config.productionTip = false;
 
@@ -39,7 +40,8 @@ const checkAuth = function(to, _, next) {
 const router = new VueRouter({
   routes: [
     { path: "/", component: Home },
-    { path: "/article/:id", component: Article },
+    { path: "/article", component: Article },
+    { path: "/update" , component: Update },
     { path: "/login", component: Login },
     { path: "/logout", component: Logout },
     { path: "/register", component: Register },
