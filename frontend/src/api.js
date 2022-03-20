@@ -73,22 +73,6 @@ class Api {
        return   axios.get(API_URL + `/gpu?gpuid`, {});
   }
 
-  getStorageComp(id)  {
-     return axios.get(API_URL + `/storageCompatibility?motherboardid=eq.${id}`);
-  }
-
-  getCPUComp(id) {
-    return axios.get(API_URL + `/cpucompatibility?motherboardid=eq.${id}`);
-  }
-
-  getRAMComp(id) {
-    return axios.get(API_URL + `/ramCompatibility?motherboardid=eq.${id}`);
-  }
-
-  getCaseComp(id) {
-    return axios.get(API_URL + `/caseCompatibility?motherboardid=eq.${id}` );
-  }
-
   createBuild(rcpu, rcase, rpsu, rmotherboard) {
     return axios.post(
       API_URL + `/saved_pc_builds`,

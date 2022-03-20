@@ -86,7 +86,7 @@
         </b-tbody>
     </b-table-simple>
 <br>
-    <!--<b-table-simple hover small caption-top responsive>
+   <!-- <b-table-simple hover small caption-top responsive>
         <b-thead><strong>RAM</strong>
           <b-tr>
             <b-th></b-th>
@@ -156,7 +156,7 @@
             <b-td>${{ storage.price }}</b-td>
           </b-tr>
         </b-tbody>
-      </b-table-simple>-->
+      </b-table-simple> -->
 <br>
       <b-table-simple hover small caption-top responsive>
         <b-thead><strong>Power Supply</strong>
@@ -419,7 +419,7 @@ export default {
         //this.Url = res.headers['location'];
         //const id = parseInt(this.Url);
         console.log(buildid);
-        //this.gpuTables(buildid);
+        this.$router.push('admin');
       });
     },
     gpuTables(buildid) {
